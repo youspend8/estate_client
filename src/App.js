@@ -12,7 +12,7 @@ const App = () => {
   const search = async() => {
     console.log()
     console.log(searchQuery)
-    const response = await Axios.get(`${REQUEST_URL}/search/`);
+    const response = await Axios.get(`https://mask.thereright.co.kr/estate/search/`);
     const result = await response.data;
 
     setData(response.data)
