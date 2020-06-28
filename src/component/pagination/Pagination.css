@@ -1,0 +1,17 @@
+
+.pagination {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+.page-link {
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.current {
+  font-weight: bold;
+}
