@@ -13,6 +13,7 @@ const App = () => {
   const [ size, setSize ] = useState(10);
 
   const search = async() => {
+    console.log()
     console.log(searchQuery)
     const response = await Axios.get('http://localhost:8080/search/', {
       params: {
