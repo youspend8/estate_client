@@ -9,6 +9,9 @@ const SearchTable = ({ data, pagination }) => {
         <option value={10}>10개</option>
         <option value={20}>20개</option>
       </select>
+      <label>거래일 최근순</label>
+      <label>거래가 높은순</label>
+      <label>면적 넓은순</label>
       <table>
         <thead>
           <tr>

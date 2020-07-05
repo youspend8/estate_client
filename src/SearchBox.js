@@ -1,22 +1,66 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import TradeContext from './context/useTradeContext';
 import useTradeContext from './context/useTradeContext';
+import Axios from 'axios';
 
 const SearchBox = props => {
   const { searchQuery, search } = useTradeContext();
   const { state, action } = searchQuery;
-  const { setName } = action;
+  const { setName, setRegion, setSigungu } = action;
+  const [ regionList, setRegionList ] = useState([]);
+  const [ sigunguList, setSigunguList ] = useState([]);
+
+  const fetchCityCode = async(type) => {
+    const response = await Axios.get('http://localhost:8000/city/search', {
+      params: {
+        type: type,
+        region: state.region,
+        sigungu: state.sigungu
+      }
+    });
+    const result = await response.data;
+
+    if (type == 0) {
+      setRegionList(result);
+    } else if (type == 1) {
+      setSigunguList(result);
+    }
+    console.log('result', result)
+  }
+
+  useEffect(() => {
+    fetchCityCode(0);
+  }, [ state.region]);
+  
+  useEffect(() => {
+    fetchCityCode(1);
+  }, [ state.sigungu ]);
 
   return (
     <div>
       이름  <input type="text" name="name" onChange={e => setName(e.target.value)} /><br/>
       지역 
-      <select>
-        <option>서울시</option>
+      <select onChange={e => {
+        setRegion(e.target.value);
+      }}>
+        {
+          regionList.map((item, index) => {
+            return (
+              <option value={ item.region }> { item.name } </option>
+            )
+          })
+        }
       </select>
-      <select>
-        <option>종로구</option>
-        <option>중구</option>
+      <select onChange={e => {
+        setSigungu(e.target.value);
+      }}>
+        {
+          sigunguList.map((item, index) => {
+            return (
+              <option value={ item.sigungu }> { item.name } </option>
+            )
+          })
+        }
       </select>
       <br/>
       면적  <input type="text" name="name" onChange={e => setName(e.target.value)} /><br/>
