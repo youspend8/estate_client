@@ -29,16 +29,18 @@ const SearchBox = props => {
   }
 
   useEffect(() => {
+    fetchCityCode(0);
+    fetchCityCode(1);
+  }, [ ]);
+
+  useEffect(() => {
     fetchCityCode(1);
   }, [ state.region]);
   
-  useEffect(() => {
-    // fetchCityCode(1);
-  }, [ state.sigungu ]);
-
   return (
     <div>
-      이름  <input type="text" name="name" onChange={e => setName(e.target.value)} /><br/>
+      이름<br />
+      {/* <input type="text" name="name" onChange={e => setName(e.target.value)} /><br/> */}
       지역 
       <select onChange={e => {
         setRegion(e.target.value);
@@ -63,20 +65,22 @@ const SearchBox = props => {
         }
       </select>
       <br/>
-      면적  <input type="text" name="name" onChange={e => setName(e.target.value)} /><br/>
-      거래일  <input type="date" name="name" onChange={e => setName(e.target.value)} /><input type="date" name="name" onChange={e => setName(e.target.value)} /><br/>
-      거래종류
-      <select>
+      면적<br />
+      {/* <input type="text" name="name" onChange={e => setName(e.target.value)} /><br/> */}
+      거래일<br />
+      {/* <input type="date" name="name" onChange={e => setName(e.target.value)} /><input type="date" name="name" onChange={e => setName(e.target.value)} /><br/> */}
+      거래종류<br />
+      {/* <select>
         <option>아파트</option>
         <option>오피스텔</option>
         <option>연립다세대</option>
         <option>단독/다가구 주택</option>
-      </select>
-      거래유형
-      <select>
+      </select> */}
+      거래유형<br />
+      {/* <select>
         <option>매매  </option>
         <option>전월세</option>
-      </select> <br />
+      </select> <br /> */}
       <button type="button" onClick={e => search()}>검색</button>
     </div>
   )

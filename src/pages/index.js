@@ -18,7 +18,8 @@ const Index = () => {
   const [ region, setRegion ] = useState('11');
   const [ sigungu, setSigungu ] = useState('110');
 
-  const baseURL = window.location.host.indexOf('localhost') != -1 ? 'http://localhost:8000' : 'https://mask.thereright.co.kr';
+  const baseURL = 'https://mask.thereright.co.kr/estate';
+  // const baseURL = 'http://localhost:8000';
 
   const search = async() => {
     console.log('searchQuery', searchQuery)
