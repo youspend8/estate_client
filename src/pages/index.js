@@ -18,9 +18,11 @@ const Index = () => {
   const [ region, setRegion ] = useState('11');
   const [ sigungu, setSigungu ] = useState('110');
 
+  const baseURL = window.location.host.indexOf('localhost') != -1 ? 'http://localhost:8000' : 'https://mask.thereright.co.kr';
+
   const search = async() => {
     console.log('searchQuery', searchQuery)
-    const response = await Axios.get('http://localhost:8000/trade/search', {
+    const response = await Axios.get(`${baseURL}/trade/search`, {
       params: {
         name: name,
         region: region,
@@ -37,7 +39,7 @@ const Index = () => {
 
   const stats = async() => {
     console.log('searchQuery', searchQuery)
-    const response = await Axios.get('http://localhost:8000/trade/stats', {
+    const response = await Axios.get(`${baseURL}/trade/stats`, {
       params: {
         name: name,
         region: region,
@@ -81,7 +83,8 @@ const Index = () => {
   return (
     <TradeContext.Provider value={{
       searchQuery: searchQuery,
-      search: search
+      search: search,
+      baseURL: baseURL
     }}>
       <div className="App">
         <SearchBox />

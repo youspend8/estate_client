@@ -4,14 +4,14 @@ import useTradeContext from './context/useTradeContext';
 import Axios from 'axios';
 
 const SearchBox = props => {
-  const { searchQuery, search } = useTradeContext();
+  const { searchQuery, search, baseURL } = useTradeContext();
   const { state, action } = searchQuery;
   const { setName, setRegion, setSigungu } = action;
   const [ regionList, setRegionList ] = useState([]);
   const [ sigunguList, setSigunguList ] = useState([]);
 
   const fetchCityCode = async(type) => {
-    const response = await Axios.get('http://localhost:8000/city/search', {
+    const response = await Axios.get(`${baseURL}/city/search`, {
       params: {
         type: type,
         region: state.region,
@@ -29,11 +29,11 @@ const SearchBox = props => {
   }
 
   useEffect(() => {
-    fetchCityCode(0);
+    fetchCityCode(1);
   }, [ state.region]);
   
   useEffect(() => {
-    fetchCityCode(1);
+    // fetchCityCode(1);
   }, [ state.sigungu ]);
 
   return (
