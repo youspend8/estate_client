@@ -98,7 +98,7 @@ const Index = () => {
           onSizeChange: e => setSize(e.target.value),
           onPageChange: page => setPage(page)
         }} />
-        {/* <NaverMap /> */}
+        <NaverMap />
       </div>
     
     </TradeContext.Provider>
