@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './Pagination.css';
 
 const Pagination = ({ page, total, onChange }) => {
   const handleLinkClick = page => e => {
