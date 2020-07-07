@@ -1,6 +1,15 @@
 import Head from 'next/head';
 
 const Header = () => {
+  const gaCode = () => ({
+    __html: `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-151381503-3');
+    `
+  })
+  
   return (
     <>
       <Head>
@@ -26,6 +35,8 @@ const Header = () => {
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151381503-2"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" type="text/javascript"></script>
         <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=j767ea842t"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151381503-3"></script>
+        <script dangerouslySetInnerHTML={gaCode()}></script>
       </Head>
     </>
   )
