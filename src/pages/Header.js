@@ -8,7 +8,7 @@ const Header = () => {
         <title>부동산 시세 - thereright</title>
 	      <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-        <meta property="og:title" content="마스크 거기 - 공공마스크 정보" />
+        <meta property="og:title" content="부동산 시세 - 부동산 실거래가 정보" />
         <meta property="og:description" content="공공마스크 관련 공공데이터를 이용한 공적마스크 판매처 및 재고현황과 코로나19 통계 데이터를 제공하는 서비스입니다." />
         <meta property="og:url" content="https://www.thereright.co.kr" />
         <meta property="og:type" content="website" />
