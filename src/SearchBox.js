@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import TradeContext from './context/useTradeContext';
 import useTradeContext from './context/useTradeContext';
 import Axios from 'axios';
+import Button from './component/atoms/button/Button';
 
 const SearchBox = props => {
   const { searchQuery, search, baseURL } = useTradeContext();
@@ -81,7 +82,7 @@ const SearchBox = props => {
         <option>매매  </option>
         <option>전월세</option>
       </select> <br /> */}
-      <button type="button" onClick={e => search()}>검색</button>
+      <Button type="button" onClick={e => search()}>검색</Button>
     </div>
   )
 }

@@ -1,8 +1,9 @@
 import React from 'react';
 import Pagination from './component/pagination/Pagination';
+import Table from './component/organisms/table/Table';
 
 const SearchTable = ({ data, pagination }) => {
-  const { page, end, onPageChange, onSizeChange } = pagination;
+  const { page, end, size, onPageChange, onSizeChange } = pagination;
   return (
     <div>
       <select onChange={onSizeChange}>
@@ -12,15 +13,11 @@ const SearchTable = ({ data, pagination }) => {
       <label>거래일 최근순</label>
       <label>거래가 높은순</label>
       <label>면적 넓은순</label>
-      <table>
+      <Table minWidth={'800px'}>
         <thead>
           <tr>
             <th>#</th>
-            <th>UID</th>
             <th>이름</th>
-            <th>년</th>
-            <th>월</th>
-            <th>일</th>
             <th>거래일자</th>
             <th>거래가격</th>
             <th>면적</th>
@@ -33,16 +30,12 @@ const SearchTable = ({ data, pagination }) => {
         {
           data ? data.map((item, index) => {
             return (
-              <tr>
-                <td> { index } </td>
-                <td> { item.uid } </td>
+              <tr key={index}>
+                <td> { ((page - 1) * size) + (index + 1) } </td>
                 <td> { item.name } </td>
-                <td> { item.dealYear } </td>
-                <td> { item.dealMonth } </td>
-                <td> { item.dealDay } </td>
-                <td> { item.dealDate } </td>
-                <td> { item.amount } </td>
-                <td> { item.area } </td>
+                <td> { `${item.dealYear}년 ${item.dealMonth}월 ${item.dealDay}일` } </td>
+                <td> { item.amount >= 10000 ? (item.amount / 10000).toLocaleString(undefined, {maximumFractionDigits: 1}) + '억' : item.amount.toLocaleString() + '만' } </td>
+                <td> { (item.area / 3.3).toLocaleString(undefined, {maximumFractionDigits: 1}) + '평' } </td>
                 <td> { item.sigungu } </td>
                 <td> { item.dong } </td>
                 <td> { item.tradeType } </td>
@@ -51,7 +44,7 @@ const SearchTable = ({ data, pagination }) => {
           }) : ''
         }
         </tbody>
-      </table>
+      </Table>
       <Pagination page={page} end={end} onChange={onPageChange} />
     </div>
   )

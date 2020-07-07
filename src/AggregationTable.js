@@ -16,10 +16,10 @@ const AggregationTable = ({ data }) => {
         {
           data ? data.map((item, index) => {
             return (
-              <tr>
-                <td> { index } </td>
+              <tr key={index}>
+                <td> { index + 1 } </td>
                 <td> { item.dong } </td>
-                <td> { item.price.toFixed(0) + '만원' } </td>
+                <td> { item.price.toLocaleString(undefined, {maximumFractionDigits: 0}) + '만원' } </td>
                 <td> { item.count + '건' } </td>
               </tr>
             )

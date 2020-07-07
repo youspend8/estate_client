@@ -7,8 +7,9 @@ import NaverMap from '../NaverMap';
 import Pagination from '../component/pagination/Pagination';
 import Chart from '../component/chart/Chart';
 import AggregationTable from '../AggregationTable';
+import {withRouter} from 'next/router';
 
-const Index = () => {
+const Index = props => {
   const [ data, setData ] = useState([]);
   const [ statsData, setStatsData ] = useState([]);
   const [ page, setPage ] = useState(1);
@@ -91,6 +92,9 @@ const Index = () => {
         <SearchBox />
         <Chart data={statsData} />
         <AggregationTable data={statsData} />
+        
+        <div style={{margin: '50px 0'}} />
+
         <SearchTable data={data} pagination={{
           page: page,
           end: 10,
@@ -98,6 +102,8 @@ const Index = () => {
           onSizeChange: e => setSize(e.target.value),
           onPageChange: page => setPage(page)
         }} />
+        <br/>
+        <br/>
         <NaverMap />
       </div>
     
@@ -105,4 +111,11 @@ const Index = () => {
   );
 }
 
-export default Index;
+Index.getInitialProps = async ctx => {
+  // console.log('query', ctx.query.region)
+  return {
+    // ctx: 'asd'
+  }
+}
+
+export default withRouter(Index);

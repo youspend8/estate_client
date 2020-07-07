@@ -24,7 +24,7 @@ const Pagination = ({ page, total, onChange }) => {
 
   return (
     <ul className="pagination">
-      <li className="page-link">&lt;</li>
+      <li className="page-link" onClick={handleLinkClick(page - 1)}>&lt;</li>
       {
         array.map((item, index) => {
           if (item > 0) {
@@ -34,7 +34,7 @@ const Pagination = ({ page, total, onChange }) => {
           }
         })
       }
-      <li className="page-link">&gt;</li>
+      <li className="page-link" onClick={handleLinkClick(page + 1)}>&gt;</li>
     </ul>
   )
 }

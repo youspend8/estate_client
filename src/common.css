@@ -1,0 +1,36 @@
+
+@font-face {
+  font-family: 'NanumBarunGothic';
+  src: url('fonts/NanumBarunGothic.ttf');
+}
+
+* {
+  font-family: 'NanumBarunGothic';
+}
+
+.page-wrapper {
+  margin: 0 auto;
+  width: 60%;
+}
+
+@media (max-width: 1519.9px) and (min-width: 1000px) {
+  .page-wrapper {
+    width: 70%;
+  }
+}
+
+@media (max-width: 999.9px) and (min-width: 768px) {
+  .page-wrapper {
+    width: 80%;
+  }
+}
+
+@media (max-width: 769.9px){
+  .page-wrapper {
+    width: 100%;
+  }
+}
+
+select {
+  padding: 5px;
+}

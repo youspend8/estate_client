@@ -36,7 +36,7 @@ const Chart = props => {
       ]
       },
       options: {
-        responsive: false,
+        responsive: true,
         title: {
           display: true,
           text: '지역별 평당가격'
@@ -83,8 +83,8 @@ const Chart = props => {
   }, [ data ])
 
   return (
-    <div>
-      <canvas id="chart" width="1000" height="400"></canvas>
+    <div style={{width: '100%'}}>
+      <canvas id="chart"></canvas>
     </div>
   )
 }
