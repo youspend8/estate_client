@@ -13,14 +13,17 @@ const Index = props => {
   const [ data, setData ] = useState([]);
   const [ statsData, setStatsData ] = useState([]);
   const [ page, setPage ] = useState(1);
-  const [ size, setSize ] = useState(10);
+  const [ size, setSize ] = useState(15);
+  const [ totalPage, setTotalPage ] = useState(0);
+  const [ sortType, setSortType ] = useState('amount');
+  const [ sortMode, setSortMode ] = useState('desc');
 
   const [ name, setName ] = useState('');
   const [ region, setRegion ] = useState('11');
   const [ sigungu, setSigungu ] = useState('110');
 
-  const baseURL = 'https://mask.thereright.co.kr/estate';
-  // const baseURL = 'http://localhost:8000';
+  // const baseURL = 'https://mask.thereright.co.kr/estate';
+  const baseURL = 'http://localhost:8000';
 
   const search = async() => {
     console.log('searchQuery', searchQuery)
@@ -30,12 +33,19 @@ const Index = props => {
         region: region,
         sigungu: sigungu,
         page: page,
-        size: size
+        size: size,
+        sortType: sortType,
+        sortMode: sortMode
       }
     });
     const result = await response.data;
+    
+    const data = result.list;
+    const totalPage = result.totalPage;
 
-    setData(response.data)
+    setData(data)
+    setTotalPage(totalPage)
+    
     console.log('result', result)
   }
 
@@ -53,6 +63,7 @@ const Index = props => {
     const result = await response.data;
     
     setStatsData(result)
+
     console.log('result', result)
   }
 
@@ -76,7 +87,7 @@ const Index = props => {
   
   useEffect(() => {
     search();
-  }, [ page, size, sigungu ]);
+  }, [ page, size, sigungu, sortType, sortMode ]);
 
   useEffect(() => {
     stats();
@@ -97,10 +108,14 @@ const Index = props => {
 
         <SearchTable data={data} pagination={{
           page: page,
-          end: 10,
+          totalPage: totalPage,
           size: size,
           onSizeChange: e => setSize(e.target.value),
-          onPageChange: page => setPage(page)
+          onPageChange: page => setPage(page),
+          onSortChange: sort => {
+            setSortType(sort.type);
+            setSortMode(sort.mode);
+          }
         }} />
         <br/>
         <br/>

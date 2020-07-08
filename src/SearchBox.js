@@ -3,6 +3,9 @@ import TradeContext from './context/useTradeContext';
 import useTradeContext from './context/useTradeContext';
 import Axios from 'axios';
 import Button from './component/atoms/button/Button';
+import ButtonBox from './component/organisms/box/ButtonBox';
+import Label from './component/atoms/label/Label';
+import { Cascader } from 'antd';
 
 const SearchBox = props => {
   const { searchQuery, search, baseURL } = useTradeContext();
@@ -26,22 +29,19 @@ const SearchBox = props => {
     } else if (type == 1) {
       setSigunguList(result);
     }
-    console.log('result', result)
+    return result;
   }
 
   useEffect(() => {
     fetchCityCode(0);
-    fetchCityCode(1);
   }, [ ]);
-
+  
   useEffect(() => {
     fetchCityCode(1);
-  }, [ state.region]);
-  
+  }, [ state.region ]);
+
   return (
     <div>
-      이름<br />
-      {/* <input type="text" name="name" onChange={e => setName(e.target.value)} /><br/> */}
       지역 
       <select onChange={e => {
         setRegion(e.target.value);
@@ -66,6 +66,8 @@ const SearchBox = props => {
         }
       </select>
       <br/>
+      이름<br />
+      {/* <input type="text" name="name" onChange={e => setName(e.target.value)} /><br/> */}
       면적<br />
       {/* <input type="text" name="name" onChange={e => setName(e.target.value)} /><br/> */}
       거래일<br />

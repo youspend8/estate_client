@@ -6,12 +6,12 @@ const Chart = props => {
   // const [ labels, setLabels ] = useState([]);
   // const [ datas, setDatas ] = useState([]);
   const { data } = props;
-  
+
   const chartInit = () => {
     var ctx = document.getElementById('chart');
 
-    const labels = data.map(item => item.dong);
-    const datas = data.map(item => item.price.toFixed(0));
+    const labels = data.list.map(item => item.dong);
+    const datas = data.list.map(item => item.price.toFixed(0));
 
     chart = new window.Chart(ctx, {
       type: 'bar',
@@ -73,7 +73,7 @@ const Chart = props => {
   }
 
   useEffect(() => {
-    if (data.length != 0) {
+    if (data.list != null && data.list.length != 0) {
       if (chart != null) {
         chart.destroy();
       }

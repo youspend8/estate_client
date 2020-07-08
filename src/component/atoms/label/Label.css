@@ -1,0 +1,16 @@
+
+.label {
+  padding: 5px 5px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  color: rgb(114, 114, 114);
+}
+
+.icon {
+
+}
+
+.bold {
+  font-weight: bold;
+}

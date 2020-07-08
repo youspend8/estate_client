@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Pagination = ({ page, total, onChange }) => {
+const Pagination = ({ page, totalPage, onChange }) => {
   const handleLinkClick = page => e => {
     if (onChange != null) {
       onChange(page)
@@ -11,20 +11,20 @@ const Pagination = ({ page, total, onChange }) => {
 
   useEffect(() => {
     const start = page - 4;
-    const end = page + 5;
+    const end = page + 4 <= totalPage ? page + 4 : totalPage;
     const temp = [];
   
-    for (let i = start; i < end; i++) {
+    for (let i = start; i <= end; i++) {
       temp.push(i);
     }
     setArray(temp);
-
-    console.log(array)
-  }, [ page ]);
+  }, [ page, totalPage ]);
 
   return (
     <ul className="pagination">
-      <li className="page-link" onClick={handleLinkClick(page - 1)}>&lt;</li>
+      {
+        page > 1 ? <li className="page-link" onClick={handleLinkClick(page - 1)}>&lt;</li> : ''
+      }
       {
         array.map((item, index) => {
           if (item > 0) {
@@ -34,7 +34,9 @@ const Pagination = ({ page, total, onChange }) => {
           }
         })
       }
-      <li className="page-link" onClick={handleLinkClick(page + 1)}>&gt;</li>
+      {
+        page < totalPage ? <li className="page-link" onClick={handleLinkClick(page + 1)}>&gt;</li> : ''
+      }
     </ul>
   )
 }

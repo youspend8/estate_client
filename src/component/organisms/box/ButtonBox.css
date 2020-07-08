@@ -1,0 +1,15 @@
+
+.button-box {
+  width: 50%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.button-box .button {
+  width: 33%;
+}
+
+.region-button-box {
+  width: 100%;
+}
