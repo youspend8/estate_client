@@ -18,11 +18,11 @@ const Header = () => {
 	      <meta name="viewport" content="width=device-width,height=device-height,initial-scale=0.75,minimum-scale=0.75,maximum-scale=1,user-scalable=no" />
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <meta property="og:title" content="부동산 시세 - 부동산 실거래가 정보" />
-        <meta property="og:description" content="공공마스크 관련 공공데이터를 이용한 공적마스크 판매처 및 재고현황과 코로나19 통계 데이터를 제공하는 서비스입니다." />
+        <meta property="og:description" content="부동산 실거래가 공공데이터를 기반으로 제공하는 아파트, 오피스텔, 주택, 토지 등 부동산 거래 시세 정보를 제공하는 서비스입니다." />
         <meta property="og:url" content="https://www.thereright.co.kr" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="" />
-        <meta name="description" content="공공데이터를 활용한 공공마스크 판매처 및 공적마스크 재고 현황과 코로나19 통계 데이터를 제공하는 서비스입니다." />
+        <meta name="description" content="부동산 실거래가 공공데이터를 기반으로 제공하는 아파트, 오피스텔, 주택, 토지 등 부동산 거래 시세 정보를 제공하는 서비스입니다." />
         <meta name="naver-site-verification" content="35d9bc3262f8f9b45b902fb875586a9a965099dd"/>
         <meta name="google-site-verification" content="0EJP9jEvzKPlfbRC0y57xWXrAIVIWJ69yR9m1MyUXe8" />
         <link rel="shortcut icon" href="/icons/favicon.ico" type="image/x-icon" />
