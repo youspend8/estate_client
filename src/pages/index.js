@@ -22,8 +22,8 @@ const Index = props => {
   const [ region, setRegion ] = useState('11');
   const [ sigungu, setSigungu ] = useState('110');
 
-  // const baseURL = 'https://mask.thereright.co.kr/estate';
-  const baseURL = 'http://localhost:8000';
+  const baseURL = 'https://mask.thereright.co.kr/estate';
+  // const baseURL = 'http://localhost:8000';
 
   const search = async() => {
     console.log('searchQuery', searchQuery)
