@@ -42,7 +42,7 @@ select {
 }
 
 ::-webkit-scrollbar {
-  -webkit-appearance: none;
+  /* -webkit-appearance: none; */
   width: 3px;
 }
 

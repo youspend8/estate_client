@@ -99,6 +99,9 @@ const Header = props => {
           </div>
         </div>
       </div>
+      
+      {/* <i className="material-icons" style={{fontSize: '50px'}}>list</i> */}
+
       <nav className="nav">
         {/* <Label>
           아파트
