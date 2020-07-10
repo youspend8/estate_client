@@ -54,7 +54,7 @@ const SearchTable = ({ data, pagination }) => {
         {
           sortOption.map((item, index) => {
             return (
-              <Label onClick={handleSortChange(item)} isBold={item.mode !== 'none'} color={item.mode !== 'none' ? 'black' : ''}> 
+              <Label onClick={handleSortChange(item)} isBold={item.mode !== 'none'} color={item.mode !== 'none' ? 'black' : ''} isPointer={true}> 
                 {
                   item.title 
                 } 

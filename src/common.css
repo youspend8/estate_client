@@ -20,7 +20,7 @@ body {
 
 .page-wrapper {
   margin: 0 auto;
-  width: 60%;
+  width: 50%;
 }
 
 @media (max-width: 1519.9px) and (min-width: 1000px) {

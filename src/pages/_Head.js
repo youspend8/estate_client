@@ -1,6 +1,6 @@
-import Head from 'next/head';
+import Head from 'next/Head';
 
-const Header = () => {
+const _Head = () => {
   const gaCode = () => ({
     __html: `
       window.dataLayer = window.dataLayer || [];
@@ -42,4 +42,4 @@ const Header = () => {
   )
 }
 
-export default Header;
+export default _Head;

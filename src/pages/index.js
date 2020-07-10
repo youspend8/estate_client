@@ -8,6 +8,7 @@ import Pagination from '../component/pagination/Pagination';
 import Chart from '../component/chart/Chart';
 import AggregationTable from '../AggregationTable';
 import {withRouter} from 'next/router';
+import Header from '../Header';
 
 const Index = props => {
   const [ data, setData ] = useState([]);
@@ -99,7 +100,8 @@ const Index = props => {
       search: search,
       baseURL: baseURL
     }}>
-      <div className="App">
+      <div className="page-wrapper">
+        <Header />
         <SearchBox />
         <Chart data={statsData} />
         <AggregationTable data={statsData} />
