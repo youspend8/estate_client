@@ -38,7 +38,7 @@ const Chart = props => {
       options: {
         responsive: true,
         title: {
-          display: true,
+          display: false,
           text: '지역별 평당가격'
         },
         legend: {

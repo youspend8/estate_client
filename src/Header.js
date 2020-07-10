@@ -45,6 +45,7 @@ const Header = props => {
   const handleClickRegion = item => e => {
     setRegion(item.region)
     searchInput.current.value = item.name;
+    setSigungu(0);
   }
 
   const handleClickSigungu = item => e => {
@@ -63,7 +64,7 @@ const Header = props => {
 
       <div className="search-input" onClick={handleSearchInputClick}>
         <i className="material-icons">search</i>
-        <input type="search" placeholder="검색할 지역" style={{border: 0}} ref={searchInput} />
+        <input type="search" placeholder="지역 선택" style={{border: 0}} ref={searchInput} />
       </div>
 
       <div className="search-box" style={{display: isSearchBoxShow ? 'flex' : 'none'}}>
@@ -81,7 +82,7 @@ const Header = props => {
             {
               sigunguList.map((item, index) => {
                 return (
-                  <Button isSelected={state.sigungu === item.sigungu} onClick={handleClickSigungu(item)}> { item.name } </Button>
+                  <Button isSelected={state.region === item.region & state.sigungu === item.sigungu} onClick={handleClickSigungu(item)}> { item.name } </Button>
                 )
               })
             }

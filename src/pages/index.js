@@ -102,6 +102,8 @@ const Index = props => {
       <div className="page-wrapper">
         <Header />
         <SearchBox />
+        <div style={{margin: '20px 0'}}></div>
+        <h2 style={{textAlign: 'center', fontWeight: 'bold'}}>지역별 평당가격</h2>
         <Chart data={statsData} />
         <AggregationTable data={statsData} />
         

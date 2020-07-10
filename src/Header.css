@@ -1,7 +1,7 @@
 
 .header {
-  background-color: white;
-  padding: 15px 0;
+  background-color: #ff99ae;
+  padding: 10px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -14,19 +14,19 @@
   background-color: white;
   padding: 5px 15px;
   /* box-shadow: 0px 0px 2px 2px #fff0f3; */
-  border: 3px solid #fff0f3;
+  border: 1px solid #cccccc;
   width: 100%;
 }
 
 .search-input input {
   padding: 5px 10px;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: lighter;
   width: 100%;
 }
 
 .search-input i {
-  font-size: 30px;
+  font-size: 36px;
 }
 
 .search-input input:focus {
@@ -41,9 +41,9 @@
 .search-box {
   position: absolute;
   background-color: white;
-  width: 100%;
+  width: calc(100% - 20px);
   min-height: 350px;
-  top: 64px;
+  top: 60px;
   border: 3px solid #fff0f3;
   border-top: 0;
   padding: 5px;
@@ -125,9 +125,9 @@
 }
 
 @media (max-width: 769.9px){
-  .search-box > div:first-child {
+  /* .search-box > div:first-child {
     border-bottom: 1px solid #cccccc;
-  }
+  } */
 
   .search-box > div {
     width: 100%;

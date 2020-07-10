@@ -32,7 +32,6 @@ body {
 @media (max-width: 999.9px) {
   .page-wrapper {
     width: 100%;
-    padding: 0 5px;
   }
 }
 
@@ -44,6 +43,7 @@ select {
 
 ::-webkit-scrollbar {
   -webkit-appearance: none;
+  width: 3px;
 }
 
 ::-webkit-scrollbar:vertical {

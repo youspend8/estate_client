@@ -42,20 +42,20 @@ const SearchBox = props => {
 
   return (
     <div>
-      이름<br />
+      {/* 이름<br /> */}
       {/* <input type="text" name="name" onChange={e => setName(e.target.value)} /><br/> */}
-      면적<br />
+      {/* 면적<br /> */}
       {/* <input type="text" name="name" onChange={e => setName(e.target.value)} /><br/> */}
-      거래일<br />
+      {/* 거래일<br /> */}
       {/* <input type="date" name="name" onChange={e => setName(e.target.value)} /><input type="date" name="name" onChange={e => setName(e.target.value)} /><br/> */}
-      거래종류<br />
+      {/* 거래종류<br /> */}
       {/* <select>
         <option>아파트</option>
         <option>오피스텔</option>
         <option>연립다세대</option>
         <option>단독/다가구 주택</option>
       </select> */}
-      거래유형<br />
+      {/* 거래유형<br /> */}
       {/* <select>
         <option>매매  </option>
         <option>전월세</option>
