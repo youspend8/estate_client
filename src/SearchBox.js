@@ -42,30 +42,6 @@ const SearchBox = props => {
 
   return (
     <div>
-      지역 
-      <select onChange={e => {
-        setRegion(e.target.value);
-      }}>
-        {
-          regionList.map((item, index) => {
-            return (
-              <option value={ item.region }> { item.name } </option>
-            )
-          })
-        }
-      </select>
-      <select onChange={e => {
-        setSigungu(e.target.value);
-      }}>
-        {
-          sigunguList.map((item, index) => {
-            return (
-              <option value={ item.sigungu }> { item.name } </option>
-            )
-          })
-        }
-      </select>
-      <br/>
       이름<br />
       {/* <input type="text" name="name" onChange={e => setName(e.target.value)} /><br/> */}
       면적<br />
@@ -84,7 +60,6 @@ const SearchBox = props => {
         <option>매매  </option>
         <option>전월세</option>
       </select> <br /> */}
-      <Button type="button" onClick={e => search()}>검색</Button>
     </div>
   )
 }

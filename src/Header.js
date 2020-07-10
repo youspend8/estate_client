@@ -11,7 +11,10 @@ const Header = props => {
   const { setName, setRegion, setSigungu } = action;
   const [ regionList, setRegionList ] = useState([]);
   const [ sigunguList, setSigunguList ] = useState([]);
+
   const searchInput = useRef();
+
+  const [ isSearchBoxShow, setSearchBoxShow ] = useState(false);
 
   const fetchCityCode = async(type) => {
     const response = await Axios.get(`${baseURL}/city/search`, {
@@ -46,17 +49,24 @@ const Header = props => {
 
   const handleClickSigungu = item => e => {
     setSigungu(item.sigungu)
+    setSearchBoxShow(false);
     searchInput.current.value = searchInput.current.value.split(' ')[0] + ' ' + item.name;
+  }
+
+  const handleSearchInputClick = e => {
+    setSearchBoxShow(true);
   }
 
   return (
     <div className="header">
-      <div className="search-input">
+      <div className="search-box-overlay" style={{display: isSearchBoxShow ? 'block' : 'none'}} onClick={e => setSearchBoxShow(false)}></div>
+
+      <div className="search-input" onClick={handleSearchInputClick}>
         <i className="material-icons">search</i>
         <input type="search" placeholder="검색할 지역" style={{border: 0}} ref={searchInput} />
       </div>
 
-      <div className="search-box">
+      <div className="search-box" style={{display: isSearchBoxShow ? 'flex' : 'none'}}>
         <div className="search-box-left">
           <div className="search-box-region">
             {
@@ -89,7 +99,7 @@ const Header = props => {
         </div>
       </div>
       <nav className="nav">
-        <Label>
+        {/* <Label>
           아파트
         </Label>
         <Label>
@@ -97,7 +107,7 @@ const Header = props => {
         </Label>
         <Label>
           단독/다가구
-        </Label>
+        </Label> */}
       </nav>
     </div>
   )

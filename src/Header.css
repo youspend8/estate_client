@@ -1,7 +1,7 @@
 
 .header {
   background-color: white;
-  padding: 15px;
+  padding: 15px 0;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -41,25 +41,22 @@
 .search-box {
   position: absolute;
   background-color: white;
-  width: calc(100% - 30px);
-  height: 400px;
+  width: 100%;
+  min-height: 350px;
   top: 64px;
   border: 3px solid #fff0f3;
   border-top: 0;
   padding: 5px;
   display: flex;
   flex-wrap: wrap;
-}
-
-.search-box > div:first-child {
-  border-right: 1px solid #cccccc;
+  z-index: 999;
 }
 
 .search-box > div {
   display: inline-block;
   width: 50%;
-  height: 100%;
   padding: 10px 5px;
+  height: 350px;
 }
 
 .search-box > .search-box-left {
@@ -90,17 +87,48 @@
   width: 100%;
 }
 
-
-@media (max-width: 1519.9px) and (min-width: 1000px) {
+.search-box-overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
 }
 
-@media (max-width: 999.9px) and (min-width: 768px) {
+@media (max-width: 1519.9px) and (min-width: 1000px) {
+
+}
+
+@media (min-width: 1000px) {
+  .search-box > div:first-child {
+    border-right: 1px solid #cccccc;
+  }
+}
+
+@media (max-width: 999.9px) {
+  /* .search-box > div:first-child {
+    border-bottom: 1px solid #cccccc;
+  } */
+
   .search-box > div {
     width: 100%;
+  }
+
+  .search-box > .search-box-left > div {
+    width: 100%;
+  }
+
+  .search-box > div:nth-child(2) {
+    display: none;
   }
 }
 
 @media (max-width: 769.9px){
+  .search-box > div:first-child {
+    border-bottom: 1px solid #cccccc;
+  }
+
   .search-box > div {
     width: 100%;
   }
