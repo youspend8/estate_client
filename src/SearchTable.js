@@ -21,7 +21,7 @@ const SearchTable = ({ data, pagination }) => {
     } else if (item.mode === 'desc') {
       item.mode = 'asc';
     } else if (item.mode === 'asc') {
-      item.mode = 'none';
+      item.mode = 'desc';
     }
     setSortOption([...sortOption]);
     onSortChange(item);
@@ -86,7 +86,7 @@ const SearchTable = ({ data, pagination }) => {
               <tr key={index}>
                 <td style={{width: '50px'}}> { ((page - 1) * size) + (index + 1) } </td>
                 <td style={{width: '150px'}}> { item.name } </td>
-                <td style={{width: '125px'}}> { `${item.dealYear}년 ${item.dealMonth}월 ${item.dealDay}일` } </td>
+                <td style={{width: '125px'}}> { `${item.dealYear}-${item.dealMonth < 10 ? '0' : ''}${item.dealMonth}-${item.dealDay < 10 ? '0' : ''}${item.dealDay}` } </td>
                 <td style={{width: '75px'}}> { item.amount >= 10000 ? (item.amount / 10000).toLocaleString(undefined, {maximumFractionDigits: 1}) + '억' : item.amount.toLocaleString() + '만' } </td>
                 <td style={{width: '50px'}}> { (item.area / 3.3).toLocaleString(undefined, {maximumFractionDigits: 1}) + '평' } </td>
                 <td style={{width: '75px'}}> { item.sigungu } </td>
