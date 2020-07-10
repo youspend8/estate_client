@@ -4,7 +4,6 @@ import SearchTable from '../SearchTable';
 import Axios from 'axios';
 import { TradeContext } from '../context/useTradeContext';
 import NaverMap from '../NaverMap';
-import Pagination from '../component/pagination/Pagination';
 import Chart from '../component/chart/Chart';
 import AggregationTable from '../AggregationTable';
 import {withRouter} from 'next/router';
