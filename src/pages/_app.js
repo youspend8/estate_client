@@ -11,13 +11,13 @@ import '../component/atoms/label/Label.css';
 import '../component/atoms/container/Container.css';
 import '../component/organisms/box/ButtonBox.css';
 
-import Head from 'next/head';
+import FrameHeader from './FrameHeader';
 
 const EstateApp = props => {
   const { Component, pageProps } = props;
   return (
     <div>
-      <Head />
+      <FrameHeader />
       <Component {...pageProps} />
     </div>
   )

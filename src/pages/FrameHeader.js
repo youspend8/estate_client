@@ -1,6 +1,6 @@
 import Head from 'next/Head';
 
-const _Head = () => {
+const FrameHeader = () => {
   const gaCode = () => ({
     __html: `
       window.dataLayer = window.dataLayer || [];
@@ -42,4 +42,4 @@ const _Head = () => {
   )
 }
 
-export default _Head;
+export default FrameHeader;
