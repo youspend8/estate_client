@@ -73,7 +73,9 @@ const SearchTable = ({ data, pagination }) => {
             <th style={{width: '150px'}}>이름</th>
             <th style={{width: '125px'}}>거래일자</th>
             <th style={{width: '75px'}}>거래가격</th>
+            <th style={{width: '75px'}}>건축년도</th>
             <th style={{width: '50px'}}>면적</th>
+            <th style={{width: '50px'}}>층</th>
             <th style={{width: '75px'}}>시군구</th>
             <th style={{width: '75px'}}>동</th>
             {/* <th>거래유형</th> */}
@@ -88,7 +90,9 @@ const SearchTable = ({ data, pagination }) => {
                 <td style={{width: '150px'}}> { item.name } </td>
                 <td style={{width: '125px'}}> { `${item.dealYear}-${item.dealMonth < 10 ? '0' : ''}${item.dealMonth}-${item.dealDay < 10 ? '0' : ''}${item.dealDay}` } </td>
                 <td style={{width: '75px'}}> { item.amount >= 10000 ? (item.amount / 10000).toLocaleString(undefined, {maximumFractionDigits: 1}) + '억' : item.amount.toLocaleString() + '만' } </td>
+                <td style={{width: '75px'}}> { item.buildYear } </td>
                 <td style={{width: '50px'}}> { (item.area / 3.3).toLocaleString(undefined, {maximumFractionDigits: 1}) + '평' } </td>
+                <td style={{width: '75px'}}> { item.floor } </td>
                 <td style={{width: '75px'}}> { item.sigungu } </td>
                 <td style={{width: '75px'}}> { item.dong } </td>
                 {/* <td style={{width: '200px'}}> { item.tradeType } </td> */}
