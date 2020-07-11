@@ -7,7 +7,7 @@ import NaverMap from '../NaverMap';
 import Chart from '../component/chart/Chart';
 import AggregationTable from '../AggregationTable';
 import {withRouter} from 'next/router';
-import Header from '../pages/common/Header';
+import Header from './common/Header';
 import Label from '../component/atoms/label/Label';
 import Collapse from '../component/organisms/collapse/Collapse';
 
