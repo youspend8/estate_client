@@ -7,7 +7,7 @@ import NaverMap from '../NaverMap';
 import Chart from '../component/chart/Chart';
 import AggregationTable from '../AggregationTable';
 import {withRouter} from 'next/router';
-import Header from '../Header';
+import Header from '../pages/common/Header';
 import Label from '../component/atoms/label/Label';
 import Collapse from '../component/organisms/collapse/Collapse';
 
@@ -25,8 +25,8 @@ const Index = props => {
   const [ sigungu, setSigungu ] = useState('110');
   const [ searchKeyword, setSearchKeyword ] = useState('서울특별시 종로구');
 
-  const baseURL = 'https://mask.thereright.co.kr/estate';
-  // const baseURL = 'http://localhost:8000';
+  // const baseURL = 'https://mask.thereright.co.kr/estate';
+  const baseURL = 'http://localhost:8000';
 
   const searchHistory = async() => {
     Axios.post(`${baseURL}/search/history`, {
@@ -139,7 +139,6 @@ const Index = props => {
       <Header />
       <div className="page-wrapper">
         <SearchBox />
-        <div style={{margin: '20px 0'}}></div>
         {/* <div style={{display: 'flex'}}>
           <div style={{
             flexGrow: 1,

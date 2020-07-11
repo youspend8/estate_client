@@ -46,7 +46,7 @@ const SearchTable = ({ data, pagination }) => {
   ]);
 
   return (
-    <Container>
+    <>
       <Container
         align='right'
       >
@@ -102,7 +102,7 @@ const SearchTable = ({ data, pagination }) => {
         </tbody>
       </Table>
       <Pagination page={page} end={end} totalPage={totalPage} onChange={onPageChange} />
-    </Container>
+    </>
   )
 }
 

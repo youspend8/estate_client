@@ -1,5 +1,5 @@
 
-.header {
+.header-search {
   background-color: #ff99ae;
   padding: 10px;
   display: flex;
@@ -93,6 +93,31 @@
   top: 0;
   left: 0;
   z-index: 10;
+}
+
+.nav {
+  width: 100%;
+  height: 100%;
+  background-color: #f1f1f1;
+  padding: 5px;
+  overflow: auto;
+  overflow-y: hidden;
+}
+
+.nav > .navbar {
+  display: inline-block;
+  width: max-content;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.nav > .navbar > .nav-link {
+  display: inline-flex;
+  margin: 0 5px;
+  padding: 5px 10px;
+  font-size: 20px;
+  color: #848484;
+  align-items: center;
 }
 
 @media (max-width: 1519.9px) and (min-width: 1000px) {

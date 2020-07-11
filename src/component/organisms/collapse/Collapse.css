@@ -1,6 +1,6 @@
 
 .collapse {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .collapse-tab {
@@ -17,4 +17,11 @@
   border: 1px solid #d6d6d6;
   border-top: 0;
   padding: 15px 5px;
+}
+
+
+@media (max-width: 769.9px) {
+  .collapse-tab {
+    padding: 15px;
+  }
 }

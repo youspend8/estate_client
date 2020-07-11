@@ -3,7 +3,7 @@ import React from 'react';
 
 import 'antd/dist/antd.css';
 import '../common.css';
-import '../Header.css';
+import '../pages/common/Header.css';
 import '../component/pagination/Pagination.css';
 import '../component/organisms/table/Table.css';
 import '../component/atoms/button/Button.css';

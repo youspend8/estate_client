@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Container from './component/atoms/container/Container';
-import Label from './component/atoms/label/Label';
-import Button from './component/atoms/button/Button';
-import useTradeContext from './context/useTradeContext';
+import Label from '../../component/atoms/label/Label';
+import Button from '../../component/atoms/button/Button';
+import useTradeContext from '../../context/useTradeContext';
 import Axios from 'axios';
 
 const Header = props => {
@@ -71,6 +70,7 @@ const Header = props => {
 
   return (
     <div className="header">
+      <div className="header-search">
       <div className="search-box-overlay" style={{display: isSearchBoxShow ? 'block' : 'none'}} onClick={e => setSearchBoxShow(false)}></div>
 
       <div className="search-input" onClick={handleSearchInputClick}>
@@ -119,20 +119,23 @@ const Header = props => {
           </div>
         </div>
       </div>
+      </div>
       
+      {/* <nav className="nav">
+        <div className="navbar">
+          <a className="nav-link">
+            아파트 거래 정보
+          </a>
+          <a className="nav-link">
+            오피스텔 거래 정보
+          </a>
+          <a className="nav-link">
+            단독/다가구 거래 정보
+          </a>
+        </div>
+      </nav> */}
       {/* <i className="material-icons" style={{fontSize: '50px'}}>list</i> */}
 
-      <nav className="nav">
-        {/* <Label>
-          아파트
-        </Label>
-        <Label>
-          오피스텔
-        </Label>
-        <Label>
-          단독/다가구
-        </Label> */}
-      </nav>
     </div>
   )
 }
