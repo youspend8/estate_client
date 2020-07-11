@@ -3,7 +3,6 @@ import React from 'react';
 
 import 'antd/dist/antd.css';
 import '../common.css';
-import '../pages/common/Header.css';
 import '../component/pagination/Pagination.css';
 import '../component/organisms/table/Table.css';
 import '../component/atoms/button/Button.css';
@@ -11,6 +10,7 @@ import '../component/atoms/label/Label.css';
 import '../component/atoms/container/Container.css';
 import '../component/organisms/box/ButtonBox.css';
 import '../component/organisms/collapse/Collapse.css';
+import './common/Header.css';
 
 import FrameHeader from './FrameHeader';
 
