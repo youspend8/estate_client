@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Label from '../../component/atoms/label/Label';
-import Button from '../../component/atoms/button/Button';
-import useTradeContext from '../../context/useTradeContext';
+import Label from '../component/atoms/label/Label';
+import Button from '../component/atoms/button/Button';
+import useTradeContext from '../context/useTradeContext';
 import Axios from 'axios';
 
 const Header = props => {

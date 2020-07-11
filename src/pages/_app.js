@@ -10,7 +10,7 @@ import '../component/atoms/label/Label.css';
 import '../component/atoms/container/Container.css';
 import '../component/organisms/box/ButtonBox.css';
 import '../component/organisms/collapse/Collapse.css';
-import './common/Header.css';
+import '../common/Header.css';
 
 import FrameHeader from './FrameHeader';
 
