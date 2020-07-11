@@ -47,7 +47,6 @@ const SearchTable = ({ data, pagination }) => {
 
   return (
     <Container>
-      <h2 style={{textAlign: 'center', fontWeight: 'bold'}}>실거래 내역</h2>
       <Container
         align='right'
       >

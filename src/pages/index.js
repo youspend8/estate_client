@@ -9,6 +9,7 @@ import AggregationTable from '../AggregationTable';
 import {withRouter} from 'next/router';
 import Header from '../Header';
 import Label from '../component/atoms/label/Label';
+import Collapse from '../component/organisms/collapse/Collapse';
 
 const Index = props => {
   const [ data, setData ] = useState([]);
@@ -22,12 +23,20 @@ const Index = props => {
   const [ name, setName ] = useState('');
   const [ region, setRegion ] = useState('11');
   const [ sigungu, setSigungu ] = useState('110');
+  const [ searchKeyword, setSearchKeyword ] = useState('서울특별시 종로구');
 
-  const baseURL = 'https://mask.thereright.co.kr/estate';
-  // const baseURL = 'http://localhost:8000';
+  // const baseURL = 'https://mask.thereright.co.kr/estate';
+  const baseURL = 'http://localhost:8000';
+
+  const searchHistory = async() => {
+    Axios.post(`${baseURL}/search/history`, {
+      keyword: searchKeyword
+    }, {
+      withCredentials: true,
+    })
+  }
 
   const search = async() => {
-    console.log('searchQuery', searchQuery)
     const response = await Axios.get(`${baseURL}/trade/search`, {
       params: {
         name: name,
@@ -46,12 +55,10 @@ const Index = props => {
 
     setData(data)
     setTotalPage(totalPage)
-    
-    console.log('result', result)
+    searchHistory();
   }
 
   const stats = async() => {
-    console.log('searchQuery', searchQuery)
     const response = await Axios.get(`${baseURL}/trade/stats`, {
       params: {
         name: name,
@@ -64,69 +71,64 @@ const Index = props => {
     const result = await response.data;
     
     setStatsData(result)
-
-    console.log('result', result)
   }
 
   const searchQuery = {
     state: {
       name: name,
       region: region,
-      sigungu: sigungu
+      sigungu: sigungu,
+      searchKeyword: searchKeyword, 
     },
     action: {
       setName: setName,
       setRegion: setRegion,
-      setSigungu: setSigungu
+      setSigungu: setSigungu,
+      setSearchKeyword: setSearchKeyword
     }
   }
-
-  useEffect(() => {
-    search();
-    stats();
-  }, [ ]);
   
   useEffect(() => {
-    search();
+    if (searchKeyword.split(' ').length >= 2) {
+      search();
+    }
   }, [ page, size, sigungu, sortType, sortMode ]);
 
   useEffect(() => {
-    stats();
+    if (searchKeyword.split(' ').length >= 2) {
+      stats();
+    }
   }, [ sigungu ]);
 
   const rollLeftRef = useRef();
   const rollRightRef = useRef();
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const top = Number.parseInt(rollLeftRef.current.style.top.replace('px', ''));
-      // if (ref.current.style.visibility === 'hidden') {
-      //   ref.current.style.visibility = 'visible';
-      // }
-      if (top <= (-29 * 19)) {
-        // ref.current.style.visibility = 'hidden';
-        rollLeftRef.current.style.top = '0px';
-      } else {
-        rollLeftRef.current.style.top = (top - 29) + 'px'; 
-      }
-      rollLeftRef.current.style.transition = 'all 1s ease 0s';
-    }, 3000);
-    return () => clearInterval(timer);
-  }, [ ])
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     const top = Number.parseInt(rollLeftRef.current.style.top.replace('px', ''));
+  //     if (top <= (-29 * 19)) {
+  //       rollLeftRef.current.style.top = '0px';
+  //     } else {
+  //       rollLeftRef.current.style.top = (top - 29) + 'px'; 
+  //     }
+  //     rollLeftRef.current.style.transition = 'all 1s ease 0s';
+  //   }, 3000);
+  //   return () => clearInterval(timer);
+  // }, [ ])
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const top = Number.parseInt(rollRightRef.current.style.top.replace('px', ''));
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     const top = Number.parseInt(rollRightRef.current.style.top.replace('px', ''));
 
-      if (top <= (-29 * 19)) {
-        rollRightRef.current.style.top = '0px';
-      } else {
-        rollRightRef.current.style.top = (top - 29) + 'px'; 
-      }
-      rollRightRef.current.style.transition = 'all 1s ease 0s';
-    }, 3000);
-    return () => clearInterval(timer);
-  }, [ ]);
+  //     if (top <= (-29 * 19)) {
+  //       rollRightRef.current.style.top = '0px';
+  //     } else {
+  //       rollRightRef.current.style.top = (top - 29) + 'px'; 
+  //     }
+  //     rollRightRef.current.style.transition = 'all 1s ease 0s';
+  //   }, 3000);
+  //   return () => clearInterval(timer);
+  // }, [ ]);
 
   return (
     <TradeContext.Provider value={{
@@ -138,7 +140,7 @@ const Index = props => {
       <div className="page-wrapper">
         <SearchBox />
         <div style={{margin: '20px 0'}}></div>
-        <div style={{display: 'flex'}}>
+        {/* <div style={{display: 'flex'}}>
           <div style={{
             flexGrow: 1,
             height: '29px',
@@ -206,24 +208,25 @@ const Index = props => {
               <div><Label isBold={true}>20.</Label><Label>65318	관악구</Label></div>
             </div>
           </div>
-        </div>
-        <h2 style={{textAlign: 'center', fontWeight: 'bold'}}>지역별 평당가격</h2>
-        <Chart data={statsData} />
-        <AggregationTable data={statsData} />
-        
-        <div style={{margin: '50px 0'}} />
+        </div> */}
+        <Collapse title={'지역별 평당가격'}>
+          <Chart data={statsData} />
+          <AggregationTable data={statsData} />
+        </Collapse>
 
-        <SearchTable data={data} pagination={{
-          page: page,
-          totalPage: totalPage,
-          size: size,
-          onSizeChange: e => setSize(e.target.value),
-          onPageChange: page => setPage(page),
-          onSortChange: sort => {
-            setSortType(sort.type);
-            setSortMode(sort.mode);
-          }
-        }} />
+        <Collapse title={'실거래 내역'}>
+          <SearchTable data={data} pagination={{
+            page: page,
+            totalPage: totalPage,
+            size: size,
+            onSizeChange: e => setSize(e.target.value),
+            onPageChange: page => setPage(page),
+            onSortChange: sort => {
+              setSortType(sort.type);
+              setSortMode(sort.mode);
+            }
+          }} />
+        </Collapse>
         <br/>
         <br/>
         <NaverMap />

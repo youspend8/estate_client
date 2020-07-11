@@ -6,17 +6,27 @@ import useTradeContext from './context/useTradeContext';
 import Axios from 'axios';
 
 const Header = props => {
-  const { searchQuery, search, baseURL } = useTradeContext();
+  const { searchQuery, baseURL } = useTradeContext();
   const { state, action } = searchQuery;
-  const { setName, setRegion, setSigungu } = action;
+  const { setName, setRegion, setSigungu, setSearchKeyword } = action;
   const [ regionList, setRegionList ] = useState([]);
   const [ sigunguList, setSigunguList ] = useState([]);
+  const [ searchHistory, setSearchHistory ] = useState([]);
 
   const searchInput = useRef();
 
   const [ isSearchBoxShow, setSearchBoxShow ] = useState(false);
 
-  const fetchCityCode = async(type) => {
+  const fetchSearchHistory = async() => {
+    // const response = await Axios.get(`${baseURL}/search/history`, {
+    //   withCredentials: true
+    // });
+    // const result = await response.data;
+    // const data = result.list;
+    // setSearchHistory(data);
+  }
+
+  const fetchCityCode = async type => {
     const response = await Axios.get(`${baseURL}/city/search`, {
       params: {
         type: type,
@@ -36,6 +46,7 @@ const Header = props => {
 
   useEffect(() => {
     fetchCityCode(0);
+    fetchSearchHistory();
   }, [ ]);
   
   useEffect(() => {
@@ -43,15 +54,15 @@ const Header = props => {
   }, [ state.region ]);
 
   const handleClickRegion = item => e => {
+    setSearchKeyword(item.name);
     setRegion(item.region)
-    searchInput.current.value = item.name;
     setSigungu(0);
   }
 
   const handleClickSigungu = item => e => {
+    setSearchKeyword(state.searchKeyword.split(' ')[0] + ' ' + item.name);
     setSigungu(item.sigungu)
     setSearchBoxShow(false);
-    searchInput.current.value = searchInput.current.value.split(' ')[0] + ' ' + item.name;
   }
 
   const handleSearchInputClick = e => {
@@ -64,7 +75,7 @@ const Header = props => {
 
       <div className="search-input" onClick={handleSearchInputClick}>
         <i className="material-icons">search</i>
-        <input type="search" placeholder="지역 선택" style={{border: 0}} ref={searchInput} />
+        <input type="search" placeholder="지역 선택" style={{border: 0}} ref={searchInput} value={state.searchKeyword} />
       </div>
 
       <div className="search-box" style={{display: isSearchBoxShow ? 'flex' : 'none'}}>
@@ -73,7 +84,7 @@ const Header = props => {
             {
               regionList.map((item, index) => {
                 return (
-                  <Button isSelected={state.region === item.region} onClick={handleClickRegion(item)}> { item.name } </Button>
+                  <Button isSelected={state.region === item.region} onClick={handleClickRegion(item)} style={{padding: '20px'}}> { item.name } </Button>
                 )
               })
             }
@@ -82,7 +93,7 @@ const Header = props => {
             {
               sigunguList.map((item, index) => {
                 return (
-                  <Button isSelected={state.region === item.region & state.sigungu === item.sigungu} onClick={handleClickSigungu(item)}> { item.name } </Button>
+                  <Button isSelected={state.region === item.region & state.sigungu === item.sigungu} onClick={handleClickSigungu(item)} style={{padding: '20px'}}> { item.name } </Button>
                 )
               })
             }
@@ -91,7 +102,16 @@ const Header = props => {
         <div className="search-box-right">
           <Label fontSize={14}>최근 검색 지역</Label>
           <div className="search-recent">
-
+            {
+              searchHistory.map((item, index) => {
+                return (
+                  <div> 
+                    <Label> { item.keyword } </Label>
+                    <Label> { item.createDate } </Label>
+                  </div>
+                )
+              })
+            }
           </div>
           <Label fontSize={14}>인기 검색 지역</Label>
           <div className="search-pop">
