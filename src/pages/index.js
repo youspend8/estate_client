@@ -170,6 +170,12 @@ const Index = props => {
   //   return () => clearInterval(timer);
   // }, [ ]);
 
+  const googleAdsenseCode = () => ({
+    __html: `
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    `
+  })
+
   return (
     <TradeContext.Provider value={{
       searchQuery: searchQuery,
@@ -253,6 +259,17 @@ const Index = props => {
           <LineChart data={countByMonthData} />
           {/* <AggregationTable data={countByMonth} /> */}
         </Collapse>
+
+        <div style={{textAlign: 'center'}}>
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <ins class="adsbygoogle"
+              style={{display: 'block', textAlign: 'center'}}
+              data-ad-layout="in-article"
+              data-ad-format="fluid"
+              data-ad-client="ca-pub-8303326390642613"
+              data-ad-slot="2622704817"></ins>
+          <script dangerouslySetInnerHTML={googleAdsenseCode()}></script>
+        </div>
 
         <Collapse title={'지역별 평당가격'}>
           <BarChart data={statsData} />
