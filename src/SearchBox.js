@@ -10,7 +10,7 @@ import Button from './component/atoms/button/Button';
 import Select from './component/atoms/select/Select';
 
 const SearchBox = props => {
-  const { searchQuery, search, baseURL } = useTradeContext();
+  const { searchQuery, search, searchProcess, baseURL } = useTradeContext();
   const { state, action } = searchQuery;
   const { 
     setName, 
@@ -54,7 +54,7 @@ const SearchBox = props => {
     <div className="search-box-sub">
       <Row>
         <Label width={'20%'}>단지명</Label>
-        <SearchInputName name="name" onChange={e => setName(e.target.value)} onKeyUp={e => e.keyCode == 13 ? search() : ''} style={{width: '80%'}}/>
+        <SearchInputName name="name" onChange={e => setName(e.target.value)} onKeyUp={e => e.keyCode == 13 ? searchProcess() : ''} style={{width: '80%'}}/>
       </Row>
       {/* 면적<br /> */}
       {/* <input type="text" name="name" onChange={e => setName(e.target.value)} /><br/> */}
@@ -105,7 +105,7 @@ const SearchBox = props => {
       </Row>
 
       <Row align={'right'}>
-        <Button onClick={search}>조회</Button>
+        <Button onClick={searchProcess}>조회</Button>
       </Row>
     </div>
   )

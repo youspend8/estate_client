@@ -121,6 +121,12 @@ const Index = props => {
     }
   }
   
+  const searchProcess = () => {
+    search();
+    stats();
+    countByMonth();
+  }
+
   useEffect(() => {
     if (searchKeyword.split(' ').length >= 2) {
       search();
@@ -168,10 +174,12 @@ const Index = props => {
     <TradeContext.Provider value={{
       searchQuery: searchQuery,
       search: search,
+      searchProcess: searchProcess,
       baseURL: baseURL
     }}>
       <Header />
       <div className="page-wrapper">
+        <SearchBox />
         {/* <div style={{display: 'flex'}}>
           <div style={{
             flexGrow: 1,
@@ -252,7 +260,6 @@ const Index = props => {
         </Collapse>
 
         <Collapse title={'실거래 내역'}>
-          <SearchBox />
           <SearchTable data={data} pagination={{
             page: page,
             totalPage: totalPage,
