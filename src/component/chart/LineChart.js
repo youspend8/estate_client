@@ -2,23 +2,24 @@ import React, { useEffect, useState } from 'react';
 
 let chart;
 
-const Chart = props => {
-  // const [ labels, setLabels ] = useState([]);
-  // const [ datas, setDatas ] = useState([]);
+// const id = `chart-${(Math.random() * 1000000000).toFixed(0)}`;
+const id = `chart-line`;
+
+const LineChart = props => {
   const { data } = props;
 
   const chartInit = () => {
-    var ctx = document.getElementById('chart');
+    const ctx = document.getElementById(id);
 
-    const labels = data.list.map(item => item.dong);
-    const datas = data.list.map(item => item.price.toFixed(0));
+    const labels = data.list.map(item => Object.entries(item)[0][0]);
+    const datas = data.list.map(item => Object.entries(item)[0][1]);
 
     chart = new window.Chart(ctx, {
-      type: 'bar',
+      type: 'line',
       data: {
         labels: labels,
         datasets: [{
-          label: '평당가격 ( 단위 : 만원 ) ',
+          label: '거래량 ( 단위 : 건 ) ',
           backgroundColor: 'rgb(255, 99, 132)',
           borderColor: 'rgb(255, 99, 132)',
           data: datas,
@@ -53,20 +54,21 @@ const Chart = props => {
           intersect: true
         },
         scales: {
-          x: {
+          xAxes: [{
             display: true,
             scaleLabel: {
               display: true,
-              labelString: 'Month'
             }
-          },
-          y: {
+          }],
+          yAxes: [{
             display: true,
             scaleLabel: {
               display: true,
-              labelString: 'Value'
+            },
+            ticks: {
+              beginAtZero: true,
             }
-          }
+          }]
         }
       }
     });
@@ -84,9 +86,9 @@ const Chart = props => {
 
   return (
     <div style={{width: '100%'}}>
-      <canvas id="chart"></canvas>
+      <canvas id={id}></canvas>
     </div>
   )
 }
 
-export default Chart;
+export default LineChart;

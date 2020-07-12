@@ -4,16 +4,18 @@ import SearchTable from '../SearchTable';
 import Axios from 'axios';
 import { TradeContext } from '../context/useTradeContext';
 import NaverMap from '../NaverMap';
-import Chart from '../component/chart/Chart';
+import BarChart from '../component/chart/BarChart';
 import AggregationTable from '../AggregationTable';
 import {withRouter} from 'next/router';
 import Header from '../common/Header';
 import Label from '../component/atoms/label/Label';
 import Collapse from '../component/organisms/collapse/Collapse';
+import LineChart from '../component/chart/LineChart';
 
 const Index = props => {
   const [ data, setData ] = useState([]);
   const [ statsData, setStatsData ] = useState([]);
+  const [ countByMonthData, setCountByMonthData ] = useState([]);
   const [ page, setPage ] = useState(1);
   const [ size, setSize ] = useState(15);
   const [ totalPage, setTotalPage ] = useState(0);
@@ -25,8 +27,8 @@ const Index = props => {
   const [ sigungu, setSigungu ] = useState('110');
   const [ searchKeyword, setSearchKeyword ] = useState('서울특별시 종로구');
 
-  const baseURL = 'https://mask.thereright.co.kr/estate';
-  // const baseURL = 'http://localhost:8000';
+  // const baseURL = 'https://mask.thereright.co.kr/estate';
+  const baseURL = 'http://localhost:8000';
 
   const searchHistory = async() => {
     Axios.post(`${baseURL}/search/history`, {
@@ -73,6 +75,19 @@ const Index = props => {
     setStatsData(result)
   }
 
+  const countByMonth = async() => {
+    const response = await Axios.get(`${baseURL}/trade/count/month`, {
+      params: {
+        name: name,
+        region: region,
+        sigungu: sigungu
+      }
+    });
+    const result = await response.data;
+
+    setCountByMonthData(result)
+  }
+
   const searchQuery = {
     state: {
       name: name,
@@ -97,6 +112,7 @@ const Index = props => {
   useEffect(() => {
     if (searchKeyword.split(' ').length >= 2) {
       stats();
+      countByMonth();
     }
   }, [ sigungu ]);
 
@@ -208,8 +224,13 @@ const Index = props => {
             </div>
           </div>
         </div> */}
+        <Collapse title={'월별 거래량'}>
+          <LineChart data={countByMonthData} />
+          {/* <AggregationTable data={countByMonth} /> */}
+        </Collapse>
+
         <Collapse title={'지역별 평당가격'}>
-          <Chart data={statsData} />
+          <BarChart data={statsData} />
           <AggregationTable data={statsData} />
         </Collapse>
 
@@ -228,7 +249,7 @@ const Index = props => {
         </Collapse>
         <br/>
         <br/>
-        <NaverMap />
+        {/* <NaverMap /> */}
       </div>
     
     </TradeContext.Provider>
