@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Label from '../../atoms/label/Label';
 
 const Collapse = props => {
@@ -9,7 +9,13 @@ const Collapse = props => {
     setShow(!isShow);
   }
 
-  const upward = () => <i className="icon material-icons" style={{fontSize: '24px'}}>arrow_upward</i>
+  useEffect(() => {
+    ref.current.style.transform = isShow ? 'rotate( 0deg )' : 'rotate( 180deg )';
+  }, [ isShow ])
+
+  const ref = useRef();
+
+  const upward = () => <i ref={ref} className="icon material-icons" style={{fontSize: '24px', transition: 'all ease 0.5s'}}>arrow_upward</i>
   const downward = () => <i className="icon material-icons" style={{fontSize: '24px'}}>arrow_downward</i>
 
   return (
@@ -23,7 +29,8 @@ const Collapse = props => {
           { title } 
         </h3>
         {
-          isShow ? upward() : downward()
+          // isShow ? upward() : downward()
+          upward()
         }
       </div>
       {
