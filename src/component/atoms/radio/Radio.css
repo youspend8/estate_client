@@ -1,0 +1,21 @@
+
+.radio-box {
+  display: flex;
+}
+
+.radio-item {
+  border: 1px solid #b1b1b1;
+  padding: 5px 15px;
+  flex-grow: 1;
+  margin-right: 5px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.radio-item:last-child {
+  margin-right: 0;
+}
+
+.radio-item-selected {
+  background-color: #ff99ae;
+}

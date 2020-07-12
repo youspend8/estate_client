@@ -21,6 +21,9 @@ const Index = props => {
   const [ totalPage, setTotalPage ] = useState(0);
   const [ sortType, setSortType ] = useState('amount');
   const [ sortMode, setSortMode ] = useState('desc');
+  const [ tradeType, setTradeType ] = useState('trade');
+  const [ startDate, setStartDate ] = useState('2020-01');
+  const [ endDate, setEndDate ] = useState('2020-06');
 
   const [ name, setName ] = useState('');
   const [ region, setRegion ] = useState('11');
@@ -47,7 +50,10 @@ const Index = props => {
         page: page,
         size: size,
         sortType: sortType,
-        sortMode: sortMode
+        sortMode: sortMode,
+        tradeType: tradeType,
+        startDate: startDate,
+        endDate: endDate
       }
     });
     const result = await response.data;
@@ -67,7 +73,10 @@ const Index = props => {
         region: region,
         sigungu: sigungu,
         page: page,
-        size: size
+        size: size,
+        tradeType: tradeType,
+        startDate: startDate,
+        endDate: endDate
       }
     });
     const result = await response.data;
@@ -80,7 +89,10 @@ const Index = props => {
       params: {
         name: name,
         region: region,
-        sigungu: sigungu
+        sigungu: sigungu,
+        tradeType: tradeType,
+        startDate: startDate,
+        endDate: endDate
       }
     });
     const result = await response.data;
@@ -93,13 +105,19 @@ const Index = props => {
       name: name,
       region: region,
       sigungu: sigungu,
-      searchKeyword: searchKeyword, 
+      searchKeyword: searchKeyword,
+      tradeType: tradeType,
+      startDate: startDate,
+      endDate: endDate
     },
     action: {
       setName: setName,
       setRegion: setRegion,
       setSigungu: setSigungu,
-      setSearchKeyword: setSearchKeyword
+      setSearchKeyword: setSearchKeyword,
+      setTradeType: setTradeType,
+      setStartDate: setStartDate,
+      setEndDate: setEndDate
     }
   }
   
@@ -154,7 +172,6 @@ const Index = props => {
     }}>
       <Header />
       <div className="page-wrapper">
-        <SearchBox />
         {/* <div style={{display: 'flex'}}>
           <div style={{
             flexGrow: 1,
@@ -235,6 +252,7 @@ const Index = props => {
         </Collapse>
 
         <Collapse title={'실거래 내역'}>
+          <SearchBox />
           <SearchTable data={data} pagination={{
             page: page,
             totalPage: totalPage,
