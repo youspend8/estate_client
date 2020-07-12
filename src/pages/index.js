@@ -30,8 +30,8 @@ const Index = props => {
   const [ sigungu, setSigungu ] = useState('110');
   const [ searchKeyword, setSearchKeyword ] = useState('서울특별시 종로구');
 
-  // const baseURL = 'https://mask.thereright.co.kr/estate';
-  const baseURL = 'http://localhost:8000';
+  const baseURL = 'https://mask.thereright.co.kr/estate';
+  // const baseURL = 'http://localhost:8000';
 
   const searchHistory = async() => {
     Axios.post(`${baseURL}/search/history`, {
