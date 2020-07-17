@@ -14,8 +14,8 @@ import LineChart from '../component/chart/LineChart';
 
 const Index = props => {
   const [ data, setData ] = useState([]);
-  const [ searchData, setSearchData ] = useState([]);
-  const [ statsData, setStatsData ] = useState([]);
+  const [ searchData, setSearchData ] = useState(props.searchData);
+  const [ statsData, setStatsData ] = useState(props.statsData);
   const [ countByMonthData, setCountByMonthData ] = useState([]);
   const [ page, setPage ] = useState(1);
   const [ size, setSize ] = useState(15);
@@ -33,6 +33,9 @@ const Index = props => {
 
   const baseURL = 'https://mask.thereright.co.kr/estate';
   // const baseURL = 'http://localhost:8000';
+
+  console.log('props', props);
+  console.log('statsData', statsData);
 
   const searchHistory = async() => {
     Axios.post(`${baseURL}/search/history`, {
@@ -279,7 +282,7 @@ const Index = props => {
         </Collapse>
 
         <Collapse title={'실거래 내역'}>
-          <SearchTable data={data} listType={searchData.listType} pagination={{
+          <SearchTable data={searchData.list} listType={searchData.listType} pagination={{
             page: page,
             totalPage: totalPage,
             size: size,
@@ -301,9 +304,40 @@ const Index = props => {
 }
 
 Index.getInitialProps = async ctx => {
-  // console.log('query', ctx.query.region)
+  const baseURL = 'https://mask.thereright.co.kr/estate';
+  // const baseURL = 'http://localhost:8000';
+
+  const responseSearch = await Axios.get(`${baseURL}/trade/search`, {
+    params: {
+      name: '',
+      region: 11,
+      sigungu: 110,
+      page: 1,
+      size: 15,
+      sortType: 'amount',
+      sortMode: 'desc',
+      tradeType: 'trade',
+      startDate: '2020-01',
+      endDate: '2020-06',
+    }
+  });
+  const resultSearch = await responseSearch.data;
+    
+  const responseStats = await Axios.get(`${baseURL}/trade/stats`, {
+    params: {
+      name: '',
+      region: 11,
+      sigungu: 110,
+      tradeType: 'trade',
+      startDate: '2020-01',
+      endDate: '2020-06'
+    }
+  });
+  const resultStats = await responseStats.data;
+
   return {
-    // ctx: 'asd'
+    searchData: resultSearch,
+    statsData: resultStats,
   }
 }
 

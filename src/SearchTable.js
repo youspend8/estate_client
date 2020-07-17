@@ -111,31 +111,31 @@ const SearchTable = ({ data, listType, pagination }) => {
           data ? data.map((item, index) => {
             return listType === 'rent' ? (
               <tr key={index}>
-                <td style={{width: '50px'}}> { ((page - 1) * size) + (index + 1) } </td>
-                <td style={{width: '150px'}}> { item.name } </td>
-                <td style={{width: '125px'}}> { `${item.dealYear}-${item.dealMonth < 10 ? '0' : ''}${item.dealMonth}-${item.dealDay < 10 ? '0' : ''}${item.dealDay}` } </td>
-                <td style={{width: '75px'}}> { item.amount >= 10000 ? (item.amount / 10000).toLocaleString(undefined, {maximumFractionDigits: 1}) + '억' : item.amount.toLocaleString() + '만' } </td>
+                <td style={{width: '50px'}}>{ ((page - 1) * size) + (index + 1) }</td>
+                <td style={{width: '150px'}}>{ item.name }</td>
+                <td style={{width: '125px'}}>{ `${item.dealYear}-${item.dealMonth < 10 ? '0' : ''}${item.dealMonth}-${item.dealDay < 10 ? '0' : ''}${item.dealDay}` }</td>
+                <td style={{width: '75px'}}>{ item.amount >= 10000 ? (item.amount / 10000).toLocaleString(undefined, {maximumFractionDigits: 1}) + '억' : item.amount.toLocaleString() + '만' }</td>
                 <td style={{width: '75px'}}> 
                   { item.amountOption == null || item.amountOption == 0 ? '-' : item.amountOption >= 10000 ? (item.amountOption / 10000).toLocaleString(undefined, {maximumFractionDigits: 1}) + '억' : item.amountOption.toLocaleString() + '만' } 
                 </td>
-                <td style={{width: '75px'}}> { item.buildYear } </td>
-                <td style={{width: '50px'}}> { (item.area / 3.3).toLocaleString(undefined, {maximumFractionDigits: 1}) + '평' } </td>
-                <td style={{width: '75px'}}> { item.floor } </td>
-                <td style={{width: '75px'}}> { item.sigungu } </td>
-                <td style={{width: '75px'}}> { item.dong } </td>
+                <td style={{width: '75px'}}>{ item.buildYear }</td>
+                <td style={{width: '50px'}}>{ (item.area / 3.3).toLocaleString(undefined, {maximumFractionDigits: 1}) + '평' }</td>
+                <td style={{width: '75px'}}>{ item.floor }</td>
+                <td style={{width: '75px'}}>{ item.sigungu }</td>
+                <td style={{width: '75px'}}>{ item.dong }</td>
                 {/* <td style={{width: '200px'}}> { item.tradeType } </td> */}
               </tr>
             ) : (
               <tr key={index}>
-                <td style={{width: '50px'}}> { ((page - 1) * size) + (index + 1) } </td>
-                <td style={{width: '150px'}}> { item.name } </td>
-                <td style={{width: '125px'}}> { `${item.dealYear}-${item.dealMonth < 10 ? '0' : ''}${item.dealMonth}-${item.dealDay < 10 ? '0' : ''}${item.dealDay}` } </td>
-                <td style={{width: '75px'}}> { item.amount >= 10000 ? (item.amount / 10000).toLocaleString(undefined, {maximumFractionDigits: 1}) + '억' : item.amount.toLocaleString() + '만' } </td>
-                <td style={{width: '75px'}}> { item.buildYear } </td>
-                <td style={{width: '50px'}}> { (item.area / 3.3).toLocaleString(undefined, {maximumFractionDigits: 1}) + '평' } </td>
-                <td style={{width: '75px'}}> { item.floor } </td>
-                <td style={{width: '75px'}}> { item.sigungu } </td>
-                <td style={{width: '75px'}}> { item.dong } </td>
+                <td style={{width: '50px'}}>{ ((page - 1) * size) + (index + 1) }</td>
+                <td style={{width: '150px'}}>{ item.name }</td>
+                <td style={{width: '125px'}}>{ `${item.dealYear}-${item.dealMonth < 10 ? '0' : ''}${item.dealMonth}-${item.dealDay < 10 ? '0' : ''}${item.dealDay}` }</td>
+                <td style={{width: '75px'}}>{ item.amount >= 10000 ? (item.amount / 10000).toLocaleString(undefined, {maximumFractionDigits: 1}) + '억' : item.amount.toLocaleString() + '만' }</td>
+                <td style={{width: '75px'}}>{ item.buildYear }</td>
+                <td style={{width: '50px'}}>{ (item.area / 3.3).toLocaleString(undefined, {maximumFractionDigits: 1}) + '평' }</td>
+                <td style={{width: '75px'}}>{ item.floor }</td>
+                <td style={{width: '75px'}}>{ item.sigungu }</td>
+                <td style={{width: '75px'}}>{ item.dong }</td>
                 {/* <td style={{width: '200px'}}> { item.tradeType } </td> */}
               </tr>
             )
