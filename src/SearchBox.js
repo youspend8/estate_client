@@ -101,7 +101,7 @@ const SearchBox = props => {
             name: '전월세',
             value: 'rent'
           }
-        ]} />
+        ]} onChange={item => setTradeType(item.value)} />
       </Row>
 
       <Row align={'right'}>

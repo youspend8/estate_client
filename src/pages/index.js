@@ -14,6 +14,7 @@ import LineChart from '../component/chart/LineChart';
 
 const Index = props => {
   const [ data, setData ] = useState([]);
+  const [ searchData, setSearchData ] = useState([]);
   const [ statsData, setStatsData ] = useState([]);
   const [ countByMonthData, setCountByMonthData ] = useState([]);
   const [ page, setPage ] = useState(1);
@@ -61,6 +62,7 @@ const Index = props => {
     const data = result.list;
     const totalPage = result.totalPage;
 
+    setSearchData(result);
     setData(data)
     setTotalPage(totalPage)
     searchHistory();
@@ -277,7 +279,7 @@ const Index = props => {
         </Collapse>
 
         <Collapse title={'실거래 내역'}>
-          <SearchTable data={data} pagination={{
+          <SearchTable data={data} listType={searchData.listType} pagination={{
             page: page,
             totalPage: totalPage,
             size: size,
