@@ -265,7 +265,7 @@ const Index = props => {
           {/* <AggregationTable data={countByMonth} /> */}
         </Collapse>
 
-        <div style={{textAlign: 'center'}}>
+        {/* <div style={{textAlign: 'center'}}>
           <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
           <ins class="adsbygoogle"
               style={{display: 'block', textAlign: 'center'}}
@@ -274,7 +274,7 @@ const Index = props => {
               data-ad-client="ca-pub-8303326390642613"
               data-ad-slot="2622704817"></ins>
           <script dangerouslySetInnerHTML={googleAdsenseCode()}></script>
-        </div>
+        </div> */}
 
         <Collapse title={'지역별 평당가격'}>
           <BarChart data={statsData} />
