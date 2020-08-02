@@ -282,6 +282,7 @@ const Index = props => {
         </Collapse>
 
         <Collapse title={'실거래 내역'}>
+          <NaverMap data={searchData.list} />
           <SearchTable data={searchData.list} listType={searchData.listType} pagination={{
             page: page,
             totalPage: totalPage,
@@ -295,8 +296,6 @@ const Index = props => {
           }} />
         </Collapse>
         <br/>
-        <br/>
-        {/* <NaverMap /> */}
       </div>
     
     </TradeContext.Provider>
