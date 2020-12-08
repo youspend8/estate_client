@@ -10,6 +10,7 @@
   margin-right: 5px;
   border-radius: 5px;
   font-weight: bold;
+  font-size: 18px;
 }
 
 .radio-item:last-child {
