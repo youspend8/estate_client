@@ -19,7 +19,7 @@ const FrameHeader = () => {
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <meta property="og:title" content="부동산 시세 - 부동산 실거래가 정보" />
         <meta property="og:description" content="부동산 실거래가 공공데이터를 기반으로 제공하는 아파트, 오피스텔, 주택, 토지 등 부동산 거래 시세 정보를 제공하는 서비스입니다." />
-        <meta property="og:url" content="https://www.thereright.co.kr" />
+        <meta property="og:url" content="https://www.chaehoon.kr" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="" />
         <meta name="description" content="부동산 실거래가 공공데이터를 기반으로 제공하는 아파트, 오피스텔, 주택, 토지 등 부동산 거래 시세 정보를 제공하는 서비스입니다." />
