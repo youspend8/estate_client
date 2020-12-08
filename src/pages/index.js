@@ -303,7 +303,7 @@ const Index = props => {
 }
 
 Index.getInitialProps = async ctx => {
-  const baseURL = 'https://mask.thereright.co.kr/estate';
+  const baseURL = 'https://www.chaehoon.kr/estate';
   // const baseURL = 'http://localhost:8000';
 
   const responseSearch = await Axios.get(`${baseURL}/trade/search`, {
