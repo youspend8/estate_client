@@ -62,6 +62,12 @@ const SearchBox = props => {
       <Row margin={'10px 0'}>
         <Label width={'20%'}>거래일</Label>
         <Select style={{marginRight: '5px'}} onChange={e => setStartDate(e.target.value)}>
+          <option value={'2020-12'}>2020년 12월</option>
+          <option value={'2020-11'}>2020년 11월</option>
+          <option value={'2020-10'}>2020년 10월</option>
+          <option value={'2020-09'}>2020년 9월</option>
+          <option value={'2020-08'}>2020년 8월</option>
+          <option value={'2020-07'}>2020년 7월</option>
           <option value={'2020-06'}>2020년 6월</option>
           <option value={'2020-05'}>2020년 5월</option>
           <option value={'2020-04'}>2020년 4월</option>
@@ -72,6 +78,12 @@ const SearchBox = props => {
           <option value={'2019-11'}>2019년 11월</option>
         </Select>
         <Select onChange={e => setEndDate(e.target.value)}>
+          <option value={'2020-12'}>2020년 12월</option>
+          <option value={'2020-11'}>2020년 11월</option>
+          <option value={'2020-10'}>2020년 10월</option>
+          <option value={'2020-09'}>2020년 9월</option>
+          <option value={'2020-08'}>2020년 8월</option>
+          <option value={'2020-07'}>2020년 7월</option>
           <option value={'2020-06'}>2020년 6월</option>
           <option value={'2020-05'}>2020년 5월</option>
           <option value={'2020-04'}>2020년 4월</option>
